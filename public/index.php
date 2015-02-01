@@ -1,106 +1,49 @@
-  <?php
-include 'include/header.php';
-   ?>
+<?php
+/**
+ * Laravel - A PHP Framework For Web Artisans
+ *
+ * @package  Laravel
+ * @author   Taylor Otwell <taylorotwell@gmail.com>
+ */
 
-         <div class="container">
-            <div class="row row-offcanvas row-offcanvas-right">
-                <div class="col-xs-12 col-sm-9">
-                    <div class="jumbotron main-map" id="map-container">
-                        MAP HERE
-</div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Task#</th>
-                                <th>Title</th>
-                                <th>Address</th>
-                                <th>Assignd to</th>
-                                <th>Status</th>
-                                <th> action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>
-                                    <button type="button" class="btn btn-default">Label</button>                                                                                                                                                                                                                                                                                                                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>
-                                    <button type="button" class="btn btn-default">Label</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>
-                                    <button type="button" class="btn btn-default">Label</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class=""></div>
-                    <!--/row-->
-                </div>
-                <!--/span-->
-                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-                    <div class="list-group">
-                        
-                        <div class="list-group-item">  <label>Task Title</label> <input type="text" class="item-input"> </div>
-                        <div class="list-group-item">  <label>Fist Name</label> <input type="text" class="item-input"> </div>
-                        <div class="list-group-item">  <label>Last Name</label> <input type="text" class="item-input"> </div>
-                        
-                        <div class="list-group-item">  <label>Phone</label> <input type="text" class="item-input"> </div>
-                        <div class="list-group-item">  <label>Address <span style="font-size: 77%;">(select Address using map ) </span></label> <input type="text" style="width: 58%;" id='address'><input type="button" value="show in map" onclick="showAddressInMap()"> </div>
-                        <div class="list-group-item">  <label>Note</label> <textarea class="item-input">  </textarea> </div>
-                        
-                        <div class="list-group-item">  <input type="button" value="Add new task" class="item-input"> </div>
-                        
-                        <!-- <div class="list-group-item">  <label>Phone</label> <input type="text" class="item-input"> </div> -->
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll require it
+| into the script here so that we do not have to worry about the
+| loading of any our classes "manually". Feels great to relax.
+|
+*/
 
-                    </div>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                    </div>
-                </div>
-                <!--/span-->
-                <div class="col-md-4">
-                    <h3>Column title</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </div>
-            </div>
-            <!--/row-->
-            <hr>
-            <footer>
-                <div class="panel">
-                    <div class="panel-body">check</div>
-                </div>
-                <p>&copy; Company 2013</p>
-            </footer>
-        </div>
-        <!--/.container-->
-   <?php
-include 'include/footer.php';
-   ?>
+require __DIR__.'/../bootstrap/autoload.php';
+
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let's turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight these users.
+|
+*/
+
+$app = require_once __DIR__.'/../bootstrap/start.php';
+
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can simply call the run method,
+| which will execute the request and send the response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have whipped up for them.
+|
+*/
+
+$app->run();
