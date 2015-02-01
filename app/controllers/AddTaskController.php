@@ -14,7 +14,9 @@ class AddTaskController extends \BaseController {
 		// $post=POST::all();
 		// $result=DB::select('select * from tasks ');
 		// return View::make('Tasks.addTask')->with('response',$result);
-		// return "<h1>asd a</h1>";
+		$lat=Input::post('latitude');
+
+		return "<h1>$lat</h1>";
 	}
 
 

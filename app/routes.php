@@ -14,18 +14,6 @@
 
 Route::resource('task','AddTaskController');
 
-// Route::get('/AddTask', function()
-// {
-
-
-
-// 	// $results = DB::select('select * from tasks ');
-// 		// var_dump($results);
-// 	// return View::make('index');
-// 	// return "<h1> adsa d</h1>";
-// });
-
-
 Route::get('/', function()
 {
 	// $results = DB::select('select * from tasks ');
