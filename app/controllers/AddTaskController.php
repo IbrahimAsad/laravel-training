@@ -12,8 +12,8 @@ class AddTaskController extends \BaseController {
 		//
 //SELECT * FROM `tasks` WHERE 1
 		// $post=POST::all();
-		$result=DB::select('select * from tasks ');
-		return View::make('Tasks.addTask')->with('response',$result);
+		// $result=DB::select('select * from tasks ');
+		// return View::make('Tasks.addTask')->with('response',$result);
 		// return "<h1>asd a</h1>";
 	}
 
