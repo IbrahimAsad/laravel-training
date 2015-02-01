@@ -3,8 +3,8 @@
 // map-container
 
 
-var latitude = '53.34809202306839';
-var longitude = '-6.25396728515625';
+var longitude = '-97.4267578125';
+var latitude = '39.436192999314095';
 var map=null;
 
 var geocoder = null;
@@ -62,7 +62,7 @@ function showAddressInMap() {
     geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
                 orig = results[0].geometry.location;
-                // map.setCenter(orig); 
+                map.setCenter(orig); 
                 if(marker!=null)
                 	marker.setMap(null);
                 marker=new google.maps.Marker({

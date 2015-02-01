@@ -60,8 +60,15 @@ include 'include/header.php';
                     <div class="list-group">
                         
                         <div class="list-group-item">  <label>Task Title</label> <input type="text" class="item-input"> </div>
-                        <div class="list-group-item">  <label>Address <span style="font-size: 77%;">(select Address using map ) </span></label> <input type="text" style="width: 58%;" id='address'><input type="button" value="show in map" onclick="showAddressInMap()"> </div>
+                        <div class="list-group-item">  <label>Fist Name</label> <input type="text" class="item-input"> </div>
+                        <div class="list-group-item">  <label>Last Name</label> <input type="text" class="item-input"> </div>
+                        
                         <div class="list-group-item">  <label>Phone</label> <input type="text" class="item-input"> </div>
+                        <div class="list-group-item">  <label>Address <span style="font-size: 77%;">(select Address using map ) </span></label> <input type="text" style="width: 58%;" id='address'><input type="button" value="show in map" onclick="showAddressInMap()"> </div>
+                        <div class="list-group-item">  <label>Note</label> <textarea class="item-input">  </textarea> </div>
+                        
+                        <div class="list-group-item">  <input type="button" value="Add new task" class="item-input"> </div>
+                        
                         <!-- <div class="list-group-item">  <label>Phone</label> <input type="text" class="item-input"> </div> -->
 
                     </div>
