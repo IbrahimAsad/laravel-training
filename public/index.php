@@ -58,16 +58,12 @@ include 'include/header.php';
                 <!--/span-->
                 <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
                     <div class="list-group">
-                        <a href="#" class="list-group-item active">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
+                        
+                        <div class="list-group-item">  <label>Task Title</label> <input type="text" class="item-input"> </div>
+                        <div class="list-group-item">  <label>Address <span style="font-size: 77%;">(select Address using map ) </span></label> <input type="text" style="width: 58%;" id='address'><input type="button" value="show in map" onclick="showAddressInMap()"> </div>
+                        <div class="list-group-item">  <label>Phone</label> <input type="text" class="item-input"> </div>
+                        <!-- <div class="list-group-item">  <label>Phone</label> <input type="text" class="item-input"> </div> -->
+
                     </div>
                     <div class="list-group">
                         <a href="#" class="list-group-item active">Link</a>
