@@ -10,9 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+Session::put('user_id', 1);
 
 Route::resource('task','AddTaskController');
+
+Route::resource('getTasks','getTaskController');
 
 Route::get('/', function()
 {

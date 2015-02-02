@@ -10,52 +10,62 @@ class AddTaskController extends \BaseController {
 	public function index()
 	{
 
-try {
-	
+		try {
+
  			// return "<h1> Query Faild-------- </h1>";
 		//
-//SELECT * FROM `tasks` WHERE 1
+		//SELECT * FROM `tasks` WHERE 1
 		// $post=POST::all();
 		// $result=DB::select('select * from tasks ');
 		// return View::make('Tasks.addTask')->with('response',$result);
- 
-		$latitude=Input::post('latitude');
-		$longitude=Input::post('longitude');
-		$task_title=Input::post('task_title');
-		$address=Input::post('address');
-		// $note_text=Input::post('note_text');	
-		$phone=Input::post('phone');
-		$first_name=Input::post('first_name');
-		$last_name=Input::post('last_name');
- 
 
- 		$id = DB::table('tasks')->insertGetId(
-			array(
+			$latitude=Input::get('latitude');
+			$longitude=Input::get('longitude');
+			$task_title=Input::get('task_title');
+			$address=Input::get('address');
+			$note_text=Input::get('note_text');	
+			$phone=Input::get('phone');
+			$first_name=Input::get('first_name');
+			$last_name=Input::get('last_name');
+
+			$user_id=Session::get('user_id');
+
+			$dbAarr=array(
 				'latitude' => $latitude,
 				'longitude' => $longitude,
-				'task_title'=>'$task_title',
-				'address'=>'$address',
+				'task_title'=>$task_title,
+				'address'=>$address,
 				'assign'=>false,
-				'phone'=>'$phone',
-				'first_name'=>'$first_name',
-				'last_name'=>'$last_name'
-				)
-			);
+				'phone'=>$phone,
+				'first_name'=>$first_name,
+				'last_name'=>$last_name,
+				'task_date'=>date("Y-m-d H:i:s"),
+				'status'=>'NOT STARTED',
+				'user_id'=>$user_id
+				);
 
- 		if($id==null){
- 			return "<h1> Query Faild </h1>";
- 		}else{
- 			return "HEEEEEEEEEE";
- 		}
+			$task_id = DB::table('tasks')->insertGetId(
+				$dbAarr
+				); 
+			$noteData=array(
+				'task_id'=>$task_id,
+				'note_text'=>$note_text,
+				'user_id'=>$user_id,
+				'note_date'=>date("Y-m-d H:i:s")
+				);
+			$note_id=DB::table('tasks_note')->insertGetId($noteData);
 
-} catch(\Illuminate\Database\QueryException $e){
-	return "EEEEEEEEEEEEEERRRR";	
-
-}
+			return "<h2> note id $note_id  .. task id  $task_id  </h2>";
 
 
 
-		return "<h1>aaa $id</h1>";
+		} catch(\Illuminate\Database\QueryException $e){
+			return "Error";	
+
+		}
+
+
+ 
 	}
 
 

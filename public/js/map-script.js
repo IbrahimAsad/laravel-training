@@ -97,7 +97,7 @@ console.log(sendData);
 $.ajax({
   url:'task',
   data:sendData,
-  type:'POST',
+  type:'GET',
   success:function(data){
     console.log('success',data);
   },
