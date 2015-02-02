@@ -9,14 +9,53 @@ class AddTaskController extends \BaseController {
 	 */
 	public function index()
 	{
+
+try {
+	
+ 			// return "<h1> Query Faild-------- </h1>";
 		//
 //SELECT * FROM `tasks` WHERE 1
 		// $post=POST::all();
 		// $result=DB::select('select * from tasks ');
 		// return View::make('Tasks.addTask')->with('response',$result);
-		$lat=Input::post('latitude');
+ 
+		$latitude=Input::post('latitude');
+		$longitude=Input::post('longitude');
+		$task_title=Input::post('task_title');
+		$address=Input::post('address');
+		// $note_text=Input::post('note_text');	
+		$phone=Input::post('phone');
+		$first_name=Input::post('first_name');
+		$last_name=Input::post('last_name');
+ 
 
-		return "<h1>$lat</h1>";
+ 		$id = DB::table('tasks')->insertGetId(
+			array(
+				'latitude' => $latitude,
+				'longitude' => $longitude,
+				'task_title'=>'$task_title',
+				'address'=>'$address',
+				'assign'=>false,
+				'phone'=>'$phone',
+				'first_name'=>'$first_name',
+				'last_name'=>'$last_name'
+				)
+			);
+
+ 		if($id==null){
+ 			return "<h1> Query Faild </h1>";
+ 		}else{
+ 			return "HEEEEEEEEEE";
+ 		}
+
+} catch(\Illuminate\Database\QueryException $e){
+	return "EEEEEEEEEEEEEERRRR";	
+
+}
+
+
+
+		return "<h1>aaa $id</h1>";
 	}
 
 
