@@ -63,3 +63,17 @@ https://jsonblob.com/54d0ed7ce4b00003b0ee3e51
 
 if no data 
 driver/getTasks/12312 {"tasks_count":0,"tasks":[]}
+
+
+
+// UPDATE TASKs
+
+
+driver/updateTask/{driver_id}?task_id={task_id}&status={status}
+
+status (COMPLETED,IN PROGRESS,NOT STARTED).
+
+
+updated {"status":"OK","data":[]}
+
+not updateed {"status":"NOT_UPDATED","data":[]}

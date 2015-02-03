@@ -43,8 +43,41 @@ class DriverChangeTaskStatusController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		$driver_id=$id;
+		$response=array();
+		$response['status']="";
+		$response['data']=array();
+
+		if(is_numeric($driver_id)){
+			$status=Input::get('status');
+			$task_id=Input::get('task_id');
+
+			$affected=DB::table('tasks')->
+			where('task_id',$task_id)->
+			update(
+				array('status'=>$status)
+				);
+
+
+			if($affected==1){
+				$response['status']="OK";
+			}else{
+				$response['status']="NOT_UPDATED";
+			}	
+
+		}else{
+			$response['status']="ERROR";
+			$response['message']="Invalid driver id";
+			
+		}
+
+		return Response::json($response);
+
+
 		//
 	}
+
+	// private function get
 
 
 	/**
