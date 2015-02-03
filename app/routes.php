@@ -17,7 +17,6 @@ Route::resource('task','AddTaskController');
 Route::resource('driver/getTasks','GetTasksController');
 Route::resource('driver/pingLocation','PingDriverLocationController');
 Route::resource('driver/login','DriverLoginController');
-
 Route::resource('driver/addNote','DriverAddNoteController');
 
 
