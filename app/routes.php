@@ -20,6 +20,12 @@ Route::resource('driver/pingLocation','PingDriverLocationController');
 Route::resource('driver/login','DriverLoginController');
 Route::resource('driver/addNote','DriverAddNoteController');
 
+Route::resource('driver/updateTask','DriverChangeTaskStatusController');
+
+
+Route::get('/dashboard',function(){
+	return View::make('dashboard');
+});
 
 
 
