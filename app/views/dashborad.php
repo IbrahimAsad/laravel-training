@@ -48,7 +48,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-sm-9 col-sm-offset-3 main">
+                <div class="col-sm-9   main">
                     <h1 class="page-header">Dashboard</h1>
                     <div class="row placeholders">
 </div>
