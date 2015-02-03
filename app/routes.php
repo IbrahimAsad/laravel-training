@@ -14,7 +14,7 @@ Session::put('user_id', 1);
 
 Route::resource('task','AddTaskController');
 
-Route::resource('getTasks','getTaskController');
+Route::resource('getTasks','GetTasksController');
 
 Route::get('/', function()
 {
