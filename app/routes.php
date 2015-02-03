@@ -23,8 +23,8 @@ Route::resource('driver/addNote','DriverAddNoteController');
 Route::resource('driver/updateTask','DriverChangeTaskStatusController');
 
 
-Route::get('/dashboard',function(){
-	return View::make('dashboard');
+Route::get('/dashborad',function(){
+	return View::make('dashborad');
 });
 
 
