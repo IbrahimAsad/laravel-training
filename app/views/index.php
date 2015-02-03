@@ -101,6 +101,18 @@ include 'include/header.php';
             </footer>
         </div>
         <!--/.container-->
+<?php 
+include 'include/commanJS.php';
+
+?>
+
+  
+        <script type="text/javascript" src="js/map-script.js"></script>
+        <script type="text/javascript">
+        window.load=initMap();
+        </script>
+
+
    <?php
 include 'include/footer.php';
    ?>

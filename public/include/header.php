@@ -18,7 +18,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     </head>
-    <body onload="initMap();">
+    <body>
         <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
             <div class="container">
                 <div class="navbar-header">
