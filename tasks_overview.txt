@@ -1,0 +1,23 @@
+http://ibrahimasad.ml/DriversTasks/public/driver/login/{id}?code={code}
+if id and code exist in DB . it return 
+{"status":"OK","data":{"driver_id":1,"driver_name":"Ibrahim Asad"}}
+
+but
+
+NOt
+
+{"status":"UNABLE_TO_LOG","data":[]}
+
+
+ 
+
+String url='http://ibrahimasad.ml/DriversTasks/public/driver/login/';
+
+1 ) add id to url =url+id = http://ibrahimasad.ml/DriversTasks/public/driver/login/1 ( 
+ 
+
+2) add GET parameter 
+code={code} had lazem from method to add parameters. OK?
+ 
+
+
