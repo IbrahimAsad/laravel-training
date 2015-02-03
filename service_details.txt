@@ -1,0 +1,65 @@
+// LOGIN 
+
+
+driver/login/{driver_id:int}?code={string} 
+
+
+driver/login/20?code=correct_code 
+valid and success
+{"status":"OK","data":{"driver_id":1,"driver_name":"Ibrahim Asad"}}
+
+
+driver/login/20?code=wrong_code  
+	valid but faild to login
+{"status":"UNABLE_TO_LOG","data":[]}
+
+
+
+driver/login/10c?code=correct_code 
+not valid id like send string id (ad22)
+{"status":"ERROR","data":[]}
+
+// ADD NOTE
+
+driver/addNote/{driver_id:int}?note={note}&task_id={task_id}
+valid and success 
+{"status":"OK","data":{"note_id":5,"note_date":"2015-02-03 12:16:20"},"message":"SUCCESS"}
+
+
+
+driver/addNote/1?note=Helllo&task_id=a5  {"status":"ERROR","data":[],"message":"Task id NOT vaild"}
+
+driver/addNote/1a?note=Helllo&task_id=2	{"status":"ERROR","data":[],"message":"Driver id NOT vaild"}
+
+
+
+
+// PING LOCATION
+
+
+driver/pingLocation?driver_id={int}1&longitude={double}&latitude={double}
+
+if the location not changed 
+{"status":"NO_CHANGE"}
+
+if changed
+{"status":"OK"}
+
+
+if there a invalid parameters
+{"status":"ERROR"}
+
+
+///// THIS SHOULD NEVER affect in the app .. it a background process ... execute 5 min 
+
+
+
+// GET TASKS 
+
+driver/getTasks/{driver_id}
+
+if vaild
+https://jsonblob.com/54d0ed7ce4b00003b0ee3e51
+
+if no data 
+driver/getTasks/12312 {"tasks_count":0,"tasks":[]}
