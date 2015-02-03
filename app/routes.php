@@ -14,8 +14,13 @@ Session::put('user_id', 1);
 
 Route::resource('task','AddTaskController');
 
-Route::resource('getTasks','GetTasksController');
+Route::resource('driver/getTasks','GetTasksController');
 Route::resource('driver/pingLocation','PingDriverLocationController');
+Route::resource('driver/login','DriverLoginController');
+
+Route::resource('driver/addNote','DriverAddNoteController');
+
+
 
 
 Route::get('/', function()

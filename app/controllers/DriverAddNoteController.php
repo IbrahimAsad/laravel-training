@@ -1,15 +1,15 @@
 <?php
 
-class PingDriverLocationController extends \BaseController {
+class DriverAddNoteController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * //driver/pingLocation?driver_id=1&longitude=-26&latitude=25
+	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-
+		//
 	}
 
 
@@ -38,33 +38,12 @@ class PingDriverLocationController extends \BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 *	driver/pingLocation/id/longitude=-26&latitude=25
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
-	{ 
-		$lon=Input::get('longitude');
-		$lat=Input::get('latitude'); 
-		$response=array();
-		$response['status']="ERROR";
-
-
-		if(is_numeric($lon) && is_numeric($lat) && is_numeric($id)){
-			$affected=DB::table('driver')->
-			where('driver_id',$id)->
-			update(array('longitude'=>$lon,'latitude'=>$lat));
-
-
-			if($affected==1){
-				$response['status']="OK";
-			}else{
-				$response['status']="NO_CHANGE";
-			}	
-		}
-
-		return Response::json($response);
-		
+	{
+		//
 	}
 
 
@@ -89,7 +68,6 @@ class PingDriverLocationController extends \BaseController {
 	public function update($id)
 	{
 		//
-		return "string $id";
 	}
 
 
