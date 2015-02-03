@@ -16,10 +16,7 @@ class PingDriverLocationController extends \BaseController {
 
 	// return $lon." ".$lat." ".$driver_id;
 
-		DB::table('driver')->
-			where('driver_id',$driver_id)->
-			update(array('longitude'=>$lon,'latitude'=>$lat));
-
+		
 
 
 
@@ -57,6 +54,32 @@ class PingDriverLocationController extends \BaseController {
 	public function show($id)
 	{
 		//
+		// return "sadd$id";
+
+		$lon=Input::get('longitude');
+		$lat=Input::get('latitude');
+		// $driver_id=Input::get('driver_id');
+
+		// return $lon." ".$lat." ".$id;
+		$response=array();
+		$response['status']="error";
+
+
+		if(is_numeric($lon) && is_numeric($lat) && is_numeric($id)){
+			$affected=DB::table('driver')->
+			where('driver_id',$id)->
+			update(array('longitude'=>$lon,'latitude'=>$lat));
+
+
+			if($affected==1){
+				$response['status']="OK";
+			}else{
+				$response['status']="NO_CHANGE";
+			}	
+		}
+
+		return Response::json($response);
+		
 	}
 
 
@@ -81,6 +104,7 @@ class PingDriverLocationController extends \BaseController {
 	public function update($id)
 	{
 		//
+		return "string $id";
 	}
 
 
