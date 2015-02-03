@@ -15,6 +15,8 @@ Session::put('user_id', 1);
 Route::resource('task','AddTaskController');
 
 Route::resource('getTasks','GetTasksController');
+Route::resource('driver/pingLocation','PingDriverLocationController');
+
 
 Route::get('/', function()
 {

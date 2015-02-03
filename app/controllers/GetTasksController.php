@@ -75,6 +75,8 @@ class GetTasksController extends \BaseController {
 			*/
 
 			$response=array();
+
+			$response['tasks_count']=0;
 			$response['tasks']=array();
 			foreach  ($result as $task){
 				$temp=array();
@@ -102,11 +104,13 @@ class GetTasksController extends \BaseController {
 					$noteTemp['user_id']=$note->user_id;
 					$noteTemp['note_text']=$note->note_text;
 					$noteTemp['note_date']=$note->note_date;
+					$noteTemp['ByAdmin']=$note->isAdmin;
 					$temp['notes'][]=$noteTemp;
 				}
 				$response['tasks'][]=$temp;
 
 			}
+			$response['tasks_count']=sizeof($response['tasks']);
 			// var_dump($response);
 			return Response::json($response);
 		}
