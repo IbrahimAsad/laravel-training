@@ -19,12 +19,12 @@ Route::resource('driver/getTasks','DriverGetTasksController');
 Route::resource('driver/pingLocation','PingDriverLocationController');
 Route::resource('driver/login','DriverLoginController');
 Route::resource('driver/addNote','DriverAddNoteController');
-
+Route::resource('admin/getDrivers','AdminGetTasksController@Hello');
 Route::resource('driver/updateTask','DriverChangeTaskStatusController');
 
 
-Route::get('/dashborad',function(){
-	return View::make('dashborad');
+Route::get('/dashboard',function(){
+	return View::make('/dashboard');
 });
 
 

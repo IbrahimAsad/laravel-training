@@ -9,9 +9,32 @@ class AdminGetTasksController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$result =DB::table('tasks')->get();
+ 			$response=array();
+
+			$response['tasks_count']=0;
+			$response['tasks']=array();
+			foreach  ($result as $task){
+				$temp=array();
+				$temp['task_id']=$task->task_id;
+				$temp['task_title']=$task->task_title;
+				$temp['name']=$task->first_name." ".$task->last_name;
+				$temp['phone']=$task->phone;
+				$temp['longitude']=$task->longitude;
+				$temp['latitude']=$task->latitude;
+				$temp['task_date']=$task->task_date;
+				$temp['address']=$task->address;
+				$temp['status']=$task->status;
+				$response['tasks'][]=$temp;
+			}
+			$response['tasks_count']=sizeof($response['tasks']);
+			return Response::json($response);
+
 	}
 
+	public function Hello(){
+		return "HELLLO";
+	}
 
 	/**
 	 * Show the form for creating a new resource.

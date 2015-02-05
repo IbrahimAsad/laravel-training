@@ -7,3 +7,9 @@
 .item-input{
 	width: 100%;
 }
+
+
+.task-icons-options{
+	margin-left: 2px;
+	cursor: pointer;
+}

@@ -116,7 +116,9 @@ class DriverGetTasksController extends \BaseController {
 			return Response::json($response);
 		}
 		else{
-			return "$id NOOOT";
+				$response['tasks']=array();
+				$response['tasks_count']=0;
+			return Response::json($response);
 		} 
 	}
 
