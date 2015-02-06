@@ -120,31 +120,83 @@ completed_tasks
 
 function showNewTasks(value){
 	console.log("showNewTasks",value);
-	if(value){
-		$("#assigned_tasks").prop('checked', false);
-		$("#not_started_tasks").prop('checked', false);
-		$("#in_progress_tasks").prop('checked', false);
-		$("#completed_tasks").prop('checked', false);
-	}
+	// if(value){
+	// 	$("#assigned_tasks").prop('checked', false);
+	// 	$("#not_started_tasks").prop('checked', false);
+	// 	$("#in_progress_tasks").prop('checked', false);
+	// 	$("#completed_tasks").prop('checked', false);
+	// }
 
-	for(task_id in tasks_list){
-		
+	for(id in tasks_list){
+		(function(task_id){
+				if(tasks_list[task_id].assign_to==0){
+					if(value)
+						tasks_list[task_id].marker.setMap(map);
+					else
+						tasks_list[task_id].marker.setMap(null);
+				}
+		})(id);
 	}
 }
 
 function showAssignedTasks ( value){
+	return ;
 	console.log("showAssignedTasks",value);
-	$("#not_started_tasks").prop('checked', true);
-	$("#in_progress_tasks").prop('checked', true);
-	$("#completed_tasks").prop('checked', true);
+	if(value){
+		$("#not_started_tasks").prop('checked', true);
+		$("#in_progress_tasks").prop('checked', true);
+		$("#completed_tasks").prop('checked', true);
+	}
+
+	for(id in tasks_list){
+		(function(task_id){
+				if(tasks_list[task_id].assign_to>0){
+					if(value)
+						tasks_list[task_id].marker.setMap(map);
+					else
+						tasks_list[task_id].marker.setMap(null);
+				}
+		})(id);
+	}
+
 
 }
 function showNotStartedTasks ( value){
 	console.log("showNotStartedTasks",value);
+	for(id in tasks_list){
+		(function(task_id){
+				if(tasks_list[task_id].status=='NOT STARTED'){
+					if(value)
+						tasks_list[task_id].marker.setMap(map);
+					else
+						tasks_list[task_id].marker.setMap(null);
+				}
+		})(id);
+	}
 }
 function showInProgressTasks ( value){
 	console.log("showInProgressTasks",value);
+	for(id in tasks_list){
+		(function(task_id){
+				if(tasks_list[task_id].status=='IN PROGRESS'){
+					if(value)
+						tasks_list[task_id].marker.setMap(map);
+					else
+						tasks_list[task_id].marker.setMap(null);
+				}
+		})(id);
+	}
 }
 function showCompletedTasks ( value){
 	console.log("showCompletedTasks",value);
+	for(id in tasks_list){
+		(function(task_id){
+				if(tasks_list[task_id].status=='COMPLETED'){
+					if(value)
+						tasks_list[task_id].marker.setMap(map);
+					else
+						tasks_list[task_id].marker.setMap(null);
+				}
+		})(id);
+	}
 }

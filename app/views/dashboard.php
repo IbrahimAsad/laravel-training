@@ -32,20 +32,20 @@
                     <div class="row col-sm-3" style="margin-top:50px;">
                         <form class="form-horizontal">
                           <div class="form-group">
-                             <div class="col-sm-offset-2 col-sm-10">
+                             <div class="col-sm-offset-2 col-sm-10" style=" border-bottom: 1px solid #e5e5e5; padding-bottom: 22px; " >
                               <div class="checkbox">
                                 <label>
                                   <input type="checkbox" onchange="showNewTasks(this.checked);" id="new_tasks"> Show New  Tasks
                               </label>
                           </div>
                       </div>
-                      <div class="col-sm-offset-2 col-sm-10 "style=" border-bottom: 1px solid #e5e5e5; padding-bottom: 22px; " >
+                     <!--  <div class="col-sm-offset-2 col-sm-10 "style=" border-bottom: 1px solid #e5e5e5; padding-bottom: 22px; " >
                               <div class="checkbox">
                                 <label>
                                   <input type="checkbox" onchange="showAssignedTasks(this.checked);" id="assigned_tasks"> Show Assigned Tasks
                               </label>
                           </div>
-                      </div>
+                      </div> -->
                     
                             <div class="col-sm-offset-2 col-sm-10">
                               <div class="checkbox">
