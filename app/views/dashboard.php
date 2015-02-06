@@ -4,32 +4,15 @@
 
 <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-3 sidebar">
-                    <ul class="nav nav-sidebar">
-                        <li class="active">
-                            <a href="#">Overview</a>
-                        </li>
-                        
-                    </ul>
-                    <ul class="nav nav-sidebar">
-                        <li>
-                            <a href="">Nav item</a>
-                        </li>
-                        
-                    </ul>
-                    <ul class="nav nav-sidebar">
-                        <li>
-                            <a href="">Nav item again</a>
-                        </li>
-                        
-                    </ul>
-                </div>
+         
                 <div class="col-sm-9   main">
                     <h1 class="page-header">Dashboard</h1>
-                    <div class="row placeholders">
-</div>
+                    
                     <h2 class="sub-header">Section title</h2>
-                    <div class="table-responsive">
+                    <div class="container-fluid" >
+                        MAP
+                    </div>
+                    <div class="table table-hover">
                         <table class="table table-striped" id="tasks_table">
                             <thead>
                                 <tr>
@@ -62,12 +45,46 @@
                         </table>
                     </div>
                 </div>
+                    <div class="row">
+                        <form class="form-horizontal">
+                          <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" checked> Show Tasks
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-sm-offset-2 col-sm-10">
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" checked> Show Drivers
+                              </label>
+                          </div>
+                      </div>
+                    </div>    
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" class="btn btn-default">Sign in</button>
+                      </div>
+                  </div>
+                  </form>   
+                  <table class="table table-hover">
+                          <thead>
+                              <th> Driver Name</th>
+                              <th>Driver Location</th>
+                          </thead>
+                          <tbody>
+                              <td>Ibrahim </td>
+                              <td>London </td>
+                          </tbody>
+                        </table>
+
+                    </div>
+                    
+                </div>
             </div>
-            <div id="assign-task" >
-               <div>
-                   <select id="driver-list"></select>
-               </div>
-            </div>
+             
         </div>
 
 <?php 
