@@ -25,6 +25,8 @@ class AdminGetTasksController extends \BaseController {
 				$temp['task_date']=$task->task_date;
 				$temp['address']=$task->address;
 				$temp['status']=$task->status;
+				$temp['assign']=$task->assign;
+				$temp['assign_to']=$task->assign_to;
 				$response['tasks'][]=$temp;
 			}
 			$response['tasks_count']=sizeof($response['tasks']);

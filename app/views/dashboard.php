@@ -6,11 +6,9 @@
             <div class="row">
          
                 <div class="col-sm-9   main">
-                    <h1 class="page-header">Dashboard</h1>
-                    
                     <h2 class="sub-header">Section title</h2>
-                    <div class="container-fluid" >
-                        MAP
+                    <div class="container-fluid" id="map-container" style="height: 400px;">
+                     
                     </div>
                     <div class="table table-hover">
                         <table class="table table-striped" id="tasks_table">
@@ -27,31 +25,47 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- <tr id="">
-                                    <td>1</td>
-                                    <td>Fixs it</td>
-                                    <td>Ibrahim Asad</td>
-                                    <td>Nablus</td>
-                                    <td>20-12-2001</td>
-                                    <td>NOT STARTED </td>
-                                    <td>
-                                        <a class="task-icons-options" ><img src="css/icons/assign.png"></a>
-                                        <a class="task-icons-options" ><img src="css/icons/edit.png"></a>
-                                        <a class="task-icons-options" ><img src="css/icons/delete.png"></a>
-                                    </td>
-                                </tr> -->
-                                
                             </tbody>
                         </table>
                     </div>
                 </div>
-                    <div class="row">
+                    <div class="row col-sm-3" style="margin-top:50px;">
                         <form class="form-horizontal">
                           <div class="form-group">
+                             <div class="col-sm-offset-2 col-sm-10">
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" onchange="showNewTasks(this.checked);" id="new_tasks"> Show New  Tasks
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-sm-offset-2 col-sm-10 "style=" border-bottom: 1px solid #e5e5e5; padding-bottom: 22px; " >
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" onchange="showAssignedTasks(this.checked);" id="assigned_tasks"> Show Assigned Tasks
+                              </label>
+                          </div>
+                      </div>
+                    
                             <div class="col-sm-offset-2 col-sm-10">
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" checked> Show Tasks
+                                  <input type="checkbox" checked onchange="showNotStartedTasks(this.checked);" id="not_started_tasks"> Show Not Started Tasks
+                              </label>
+                          </div>
+                      </div>
+                      
+                      <div class="col-sm-offset-2 col-sm-10">
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" onchange="showInProgressTasks(this.checked);" id="in_progress_tasks"> Show In Progress Tasks
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-sm-offset-2 col-sm-10">
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" onchange="showCompletedTasks(this.checked);" id="completed_tasks"> Show Completed Tasks
                               </label>
                           </div>
                       </div>
