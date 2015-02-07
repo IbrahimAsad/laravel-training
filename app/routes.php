@@ -14,6 +14,7 @@ Session::put('user_id', 1);
 
 Route::resource('admin/task','AddTaskController');
 Route::resource('admin/getTasks','AdminGetTasksController');
+Route::resource('admin/getAllDrivers','AdminDashboarCenterController@getAllDrivers');
 
 Route::resource('driver/getTasks','DriverGetTasksController');
 Route::resource('driver/pingLocation','PingDriverLocationController');

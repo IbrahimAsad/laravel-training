@@ -34,7 +34,51 @@ function loadTasks(){
 	});
 
 }
+
+function loadDrivers(){
+	$.ajax({
+		url:'admin/getAllDrivers',
+		type:'GET',
+		success:function(data){
+			console.log("response",data);
+			for (var i = 0; i < data.length; i++) {
+				(function(driver){
+					var row="<tr id='driver_"+data[driver].driver_id+"' >"+
+					"<td>"+data[driver].driver_name+"</td>"+
+					"<td id='driver_location_"+data[driver].driver_id+"'></td></tr>";
+
+					$("#dirver-tablee").append(row);
+					loadDriversToMap(data[driver].driver_id,data[driver].latitude,data[driver].longitude);
+				})(i);
+
+			};
+			 
+		},
+		error:function(error){
+			console.log("response_error",error);
+		}
+	});
+}
  
+
+
+function loadDriversToMap(driver_id,latitude,longitude){
+	latlng=new google.maps.LatLng(latitude,longitude);
+	 geocoder.geocode({
+        'latLng': latlng
+    }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            if (results[1]) {
+                // $("#address").val(results[1].formatted_address);
+                $("#driver_location_"+driver_id).html(results[1].formatted_address);
+            } else {
+                console.log('No results found', latlng);
+            }
+        } else {
+            console.log('Geocoder failed due to: ' + status, geocoder);
+        }
+    });
+} 
 
 function createTableElements(tasks){
 	for(i=0;i<tasks.length;i++){
@@ -73,17 +117,17 @@ function createTableElements(tasks){
 
 
 function assignTask(task_id){
-	alert("Assign "+task_id);
-	$.ajax({
-		url:'admin/getDrivers',
-		type:"GET",
-		success:function(data){
-			console.log(data);
-		},
-		error:function(error){
-			console.log(error);
-		}
-	});	
+	// alert("Assign "+task_id);
+	// $.ajax({
+	// 	url:'admin/getDrivers',
+	// 	type:"GET",
+	// 	success:function(data){
+	// 		console.log(data);
+	// 	},
+	// 	error:function(error){
+	// 		console.log(error);
+	// 	}
+	// });	
 
 
 }
@@ -105,6 +149,7 @@ function initMap() {
 
     };
     map = new google.maps.Map(document.getElementById("map-container"), mapProp);
+    geocoder = new google.maps.Geocoder();
     
 	loadTasks();
 
