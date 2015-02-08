@@ -149,9 +149,11 @@ function loadDriversToMap(driver_id,latitude,longitude){
 
             } else {
                 console.log('No results found', latlng);
+                 $("#driver_location_"+driver_id).html("NO Address Yet.");
             }
         } else {
             console.log('Geocoder failed due to: ' + status, geocoder);
+            $("#driver_location_"+driver_id).html("NO Address Yet.");
         }
     });
 } 

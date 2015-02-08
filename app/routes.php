@@ -11,13 +11,17 @@
 |
 */
 
-
+// Admin Web Access ( js Requests )
 Route::resource('admin/login','AdminLoginController');
 Route::resource('admin/addTask','AddTaskController');
 Route::resource('admin/getTasks','AdminDashboarCenterController@getTasks');
 Route::resource('admin/getAllDrivers','AdminDashboarCenterController@getAllDrivers');
 Route::resource('admin/assignTask','AdminDashboarCenterController@assignTask');
+Route::resource('admin/addDriver','AdminDashboarCenterController@newDriver');
 
+
+
+// Driver API Access
 Route::resource('driver/getTasks','DriverGetTasksController');
 Route::resource('driver/pingLocation','PingDriverLocationController');
 Route::resource('driver/login','DriverLoginController');

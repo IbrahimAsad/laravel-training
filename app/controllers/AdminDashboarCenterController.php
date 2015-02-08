@@ -161,4 +161,36 @@ class AdminDashboarCenterController extends \BaseController {
 			return Response::json($response);
 	}
 
+
+	public function newDriver(){
+		$driver_name=Input::get('driver_name');
+		$driver_code=Input::get('driver_code');
+
+		$cryp_driver_code=md5($driver_code);
+		$response=array();
+		$response['status']=-1;
+		$response['message']="";
+		$response['data']="";
+
+		if($driver_name>'' && $driver_code >''){
+			// DB::table('driver')
+			$driver_id = DB::table('driver')->insertGetId(
+				array('driver_name' =>$driver_name, 'driver_code' => $cryp_driver_code)
+				);
+
+			$response['status']=10;
+			$response['message']='Added successfully !';
+			$response['data']=array('driver_id'=>$driver_id);
+		}else{
+			$response['status']=-20;
+			$response['message']="Invalid ,Driver Name or code is empty .. ";
+		}
+
+		return Response::json($response);
+
+
+
+	}
+
+
 }

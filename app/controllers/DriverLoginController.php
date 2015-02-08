@@ -52,7 +52,7 @@ class DriverLoginController extends \BaseController {
 		$response['data']=array();
 		if(is_numeric($id)){
 			$code=Input::get('code');
-
+			$code=md5($code);
 			$driver=DB::table('driver')->
 			where([
 				'driver_id'=>$id,
