@@ -15,12 +15,13 @@ Session::put('user_id', 1);
 Route::resource('admin/task','AddTaskController');
 Route::resource('admin/getTasks','AdminGetTasksController');
 Route::resource('admin/getAllDrivers','AdminDashboarCenterController@getAllDrivers');
+Route::resource('admin/assignTask','AdminDashboarCenterController@assignTask');
 
 Route::resource('driver/getTasks','DriverGetTasksController');
 Route::resource('driver/pingLocation','PingDriverLocationController');
 Route::resource('driver/login','DriverLoginController');
 Route::resource('driver/addNote','DriverAddNoteController');
-Route::resource('admin/getDrivers','AdminGetTasksController@Hello');
+// Route::resource('admin/getDrivers','AdminGetTasksController@Hello');
 Route::resource('driver/updateTask','DriverChangeTaskStatusController');
 
 

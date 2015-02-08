@@ -10,8 +10,15 @@
                     <div class="container-fluid" id="map-container" style="height: 400px;">
                      
                     </div>
-                    <div class="table table-hover">
-                        <table class="table table-striped" id="tasks_table">
+                    <div class="row">
+                    <div class="container-fluid">
+                      <div class="col-sm-9">
+                        <h3 > Latest Tasks in the server  </h3>
+                      <small> click in the NOT STARTED task .. then click in the driver you want to make the task .</small>
+                      </div>
+                      <div class="col-sm-3"> <button class="btn" id="cancel_selected_task" onclick="cancelSelectedTask();" style=" margin-top: 25px;display:none; ">Cancel selected task</button></div>
+                    </div>
+                        <table class="table table-hover" id="tasks_table">
                             <thead>
                                 <tr>
                                     <!-- <th>#</th> -->
@@ -83,14 +90,14 @@
                       </div>
                   </div>
                   </form>   
-                  <table class="table table-hover" id="dirver-tablee">
+                  <table class="table table-hover" id="dirver_table">
                           <thead>
                               <th> Driver Name</th>
                               <th>Driver Location</th>
                           </thead>
                           <tbody>
-                              <td>Ibrahim </td>
-                              <td>London </td>
+                             <!--  <td>Ibrahim </td>
+                              <td>London </td> -->
                           </tbody>
                         </table>
 

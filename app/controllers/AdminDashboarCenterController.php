@@ -98,4 +98,9 @@ class AdminDashboarCenterController extends \BaseController {
 	}
 
 
+
+	public function assignTask(){
+		
+	}
+
 }
