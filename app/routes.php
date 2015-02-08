@@ -27,23 +27,36 @@ Route::resource('driver/updateTask','DriverChangeTaskStatusController');
 
 
 
-Route::get('/login',function(){
-	return View::make('/login');
+Route::get('/',function(){
+	if(Session::has('admin_id')) 
+		return View::make('/dashboard');
+	else
+		return View::make('/login');
 });
 
 Route::get('/dashboard',function(){
-	return View::make('/dashboard');
+	// return View::make('/dashboard');
+	if(Session::has('admin_id')) 
+		return View::make('/dashboard');
+	else
+		return View::make('/login');
 });
 
 
 Route::get('/addDriver',function(){
-return View::make('/new_driver');
+// return View::make('/new_driver');
+if(Session::has('admin_id')) 
+		return View::make('/new_driver');
+	else
+		return View::make('/login');
 });
-Route::get('/', function()
-{
-	// $results = DB::select('select * from tasks ');
-		// var_dump($results);
-	return View::make('index');
-	// return "<h1> adsa d</h1>"11;
+
+Route::get('/addTask', function(){
+	// return View::make('index');
+	if(Session::has('admin_id')) 
+		return View::make('/index');
+	else
+		return View::make('/login');
+
 });
 

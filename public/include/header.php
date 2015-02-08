@@ -33,13 +33,13 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="#">Home</a>
+                            <a href="dashboard">Dashboard</a>
                         </li>
                         <li>
-                            <a href="#about">About</a>
+                            <a href="addTask">New Task</a>
                         </li>
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="addDriver">New Driver</a>
                         </li>
                     </ul>
                 </div>
