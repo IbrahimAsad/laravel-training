@@ -25,12 +25,15 @@ Route::resource('driver/addNote','DriverAddNoteController');
 Route::resource('driver/updateTask','DriverChangeTaskStatusController');
 
 
+
 Route::get('/dashboard',function(){
 	return View::make('/dashboard');
 });
 
 
-
+Route::get('/addDriver',function(){
+return View::make('/new_driver');
+});
 Route::get('/', function()
 {
 	// $results = DB::select('select * from tasks ');
