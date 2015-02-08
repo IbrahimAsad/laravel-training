@@ -10,8 +10,9 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Session::put('user_id', 1);
 
+
+Route::resource('admin/login','AdminLoginController');
 Route::resource('admin/addTask','AddTaskController');
 Route::resource('admin/getTasks','AdminDashboarCenterController@getTasks');
 Route::resource('admin/getAllDrivers','AdminDashboarCenterController@getAllDrivers');
@@ -25,6 +26,10 @@ Route::resource('driver/addNote','DriverAddNoteController');
 Route::resource('driver/updateTask','DriverChangeTaskStatusController');
 
 
+
+Route::get('/login',function(){
+	return View::make('/login');
+});
 
 Route::get('/dashboard',function(){
 	return View::make('/dashboard');
