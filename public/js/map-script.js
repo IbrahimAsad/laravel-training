@@ -93,17 +93,22 @@ function AddNewTask() {
   sendData.first_name=$("#first_name").val();
   sendData.last_name=$("#last_name").val();
 
-console.log(sendData);
-$.ajax({
-  url:'task',
-  data:sendData,
-  type:'GET',
-  success:function(data){
-    console.log('success',data);
-  },
-  error:function(data){
-    console.log("error",error);
-  }
+  console.log(sendData);
+  $.ajax({
+      url:'admin/addTask',
+      data:sendData,
+      type:'GET',
+      success:function(data){
+        if(data==1)
+            alert('success');
+        else
+            alert('failed');
+        console.log('success',data);
+
+    },
+    error:function(data){
+        console.log("error",error);
+    }
 
 });
 }

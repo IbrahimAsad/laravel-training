@@ -49,14 +49,14 @@ function loadTasks(){
 			var currTaskID=$(this).attr('id').split('_');
 			// currTaskID=currTaskID.
 			currTaskID=currTaskID[1];
-			console.log(currTaskID);
+			// console.log(currTaskID);
 			map.setCenter(tasks_list[currTaskID].marker.getPosition());
 		});
 
 		$("#tasks_table > tbody > tr").on('click',function(){
 			var currTaskID=$(this).attr('id').split('_');
 			currTaskID=currTaskID[1];
-			if(tasks_list[currTaskID].status==NOT_STARTED){
+			if(tasks_list[currTaskID].status==NOT_STARTED && tasks_list[currTaskID].assign_to ==0){
 				// alert('Click in the driver to assign this map');
 				taskToAssign=currTaskID;
 				assignStatus=true;
@@ -116,21 +116,15 @@ function loadDrivers(){
 			var currDriver=$(this).attr('id').split('_');
 			// currDriver=currDriver.
 			currDriver=currDriver[1];
-			console.log(currDriver);
+			// console.log(currDriver);
 			map.setCenter(drivers_list[currDriver].marker.getPosition());
 		});
 		$("#dirver_table > tbody > tr").on('click',function(){
 			var currDriver=$(this).attr('id').split('_');
 			currDriver=currDriver[1];
-			if(tasks_list[currDriver].status==NOT_STARTED){
-				// alert('Click in the driver to assign this map');
-				driverToAssign=currDriver;
-				// assignStatus=true;
-				// $("#tasks_table > tbody > tr").css('background-color','white');
-				// $(this).css('background-color','gray');
-				// $("#cancel_selected_task").css('display','block');
-				assignTask();
-			}
+			 	driverToAssign=currDriver;
+			 	assignTask();
+			
 		});
 
 	});
@@ -166,6 +160,11 @@ function createTableElements(tasks){
 	for(i=0;i<tasks.length;i++){
 		(function(index){
 
+			//assign status text
+			ast="NO";
+			if(tasks[index].assign_to>0)
+				ast="YES";
+
 			var row="<tr id=task_"+tasks[index].task_id+">"+
 					"<td>"+tasks[index].task_id+"</td>"+
 					"<td>"+tasks[index].task_title+"</td>"+
@@ -173,6 +172,7 @@ function createTableElements(tasks){
 					"<td>"+tasks[index].address+"</td>"+
 					"<td>"+tasks[index].task_date+"</td>"+
 					"<td>"+tasks[index].status+"</td>"+
+					"<td>"+ast+"</td>"+
 					'<td><a href="javascript:assignTask('+tasks[index].task_id+');" class="task-icons-options"  ><img src="css/icons/assign.png"  ></a>'+
                           '<a href="javascript:editTask('+tasks[index].task_id+');" class="task-icons-options"  ><img src="css/icons/edit.png"></a>'+
                           '<a href="javascript:deleteTask('+tasks[index].task_id+');"class="task-icons-options"   ><img src="css/icons/delete.png"></a>'+
@@ -204,9 +204,14 @@ function createTableElements(tasks){
 
 function assignTask(){
 	// alert("Assign "+task_id);
+	var sendData=new Object();
+	sendData.task_id=taskToAssign;
+	sendData.driver_id=driverToAssign;
+
 	$.ajax({
 		url:'admin/assignTask',
 		type:"GET",
+		data:sendData,
 		success:function(data){
 			console.log(data);
 		},

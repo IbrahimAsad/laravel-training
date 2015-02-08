@@ -28,6 +28,7 @@
                                     <th>Address</th>
                                     <th>Date</th>
                                     <th>Status</th>
+                                    <th>Assigned</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

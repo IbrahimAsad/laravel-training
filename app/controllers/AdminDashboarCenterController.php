@@ -100,7 +100,65 @@ class AdminDashboarCenterController extends \BaseController {
 
 
 	public function assignTask(){
-		
+		$task_id=Input::get('task_id');
+		$driver_id=Input::get('driver_id');
+		$response=array();
+		$response['error']=-1;
+		$response['message']="";
+		// $response['data']="";
+
+		if(is_numeric($task_id) && is_numeric($driver_id)){
+			$resp=DB::table('tasks')->
+			where('task_id',$task_id)->
+			update(array(
+					'assign_to'=>$driver_id,
+					'assign'=>true
+					)
+				);
+
+			if($resp==1){
+				// $response['data']='DONE';
+				$response['message']='Assigned successfully';
+			}else{
+				$response['error']=300;
+
+				$response['message']='unable to assign Task';
+
+			}
+
+		}else{
+			$response['error']=200;
+			$response['message']="Invalid Task ID or Driver ID";
+			
+		}
+		return Response::json($response);
+
+	}
+
+
+	public function getTasks(){
+		$result =DB::table('tasks')->orderBy('task_id','DESC')->get();
+ 			$response=array();
+
+			$response['tasks_count']=0;
+			$response['tasks']=array();
+			foreach  ($result as $task){
+				$temp=array();
+				$temp['task_id']=$task->task_id;
+				$temp['task_title']=$task->task_title;
+				$temp['name']=$task->first_name." ".$task->last_name;
+				$temp['phone']=$task->phone;
+				$temp['longitude']=$task->longitude;
+				$temp['latitude']=$task->latitude;
+				$temp['task_date']=$task->task_date;
+				$temp['address']=$task->address;
+				$temp['status']=$task->status;
+				$temp['assign']=$task->assign;
+				$temp['assign_to']=$task->assign_to;
+				$response['tasks'][]=$temp;
+			}
+			$response['tasks_count']=sizeof($response['tasks']);
+			return Response::json($response);
 	}
 
 }

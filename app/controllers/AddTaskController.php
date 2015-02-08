@@ -55,12 +55,12 @@ class AddTaskController extends \BaseController {
 				);
 			$note_id=DB::table('tasks_note')->insertGetId($noteData);
 
-			return "<h2> note id $note_id  .. task id  $task_id  </h2>";
-
+			// return "<h2> note id $note_id  .. task id  $task_id  </h2>";
+			return 1;
 
 
 		} catch(\Illuminate\Database\QueryException $e){
-			return "Error";	
+			return -1;	
 
 		}
 

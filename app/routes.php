@@ -12,8 +12,8 @@
 */
 Session::put('user_id', 1);
 
-Route::resource('admin/task','AddTaskController');
-Route::resource('admin/getTasks','AdminGetTasksController');
+Route::resource('admin/addTask','AddTaskController');
+Route::resource('admin/getTasks','AdminDashboarCenterController@getTasks');
 Route::resource('admin/getAllDrivers','AdminDashboarCenterController@getAllDrivers');
 Route::resource('admin/assignTask','AdminDashboarCenterController@assignTask');
 
