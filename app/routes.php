@@ -60,3 +60,7 @@ Route::get('/addTask', function(){
 
 });
 
+Route::get('/logout',function(){
+	Session::flush();
+	return View::make('/login');
+});

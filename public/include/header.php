@@ -41,7 +41,18 @@
                         <li>
                             <a href="addDriver">New Driver</a>
                         </li>
+                        <?php
+                        if(Session::has('admin_id')){
+                            ?>
+                             <li>
+                            <a href="logout">Log out</a>
+                        </li>
+                        <?php
+                        }
+
+                        ?>
                     </ul>
+
                 </div>
                 <!-- /.nav-collapse -->
             </div>

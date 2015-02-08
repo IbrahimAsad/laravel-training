@@ -16,6 +16,8 @@ $(document).ready(function() {
 				if(data.status==10){
 					alert(data.message);
 					document.location="dashboard";
+				}else{
+					alert(data.message);
 				}
 
 			},
