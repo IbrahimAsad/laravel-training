@@ -28,7 +28,7 @@ class AddTaskController extends \BaseController {
 			$first_name=Input::get('first_name');
 			$last_name=Input::get('last_name');
 
-			$user_id=Session::get('user_id');
+			$user_id=Session::get('admin_id');
 
 			$dbAarr=array(
 				'latitude' => $latitude,
