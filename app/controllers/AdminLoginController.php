@@ -8,11 +8,7 @@ class AdminLoginController extends \BaseController {
 	 * @return Response
 	 */
 	public function index()
-	{
-// 		//
-// var_dump(Input::all());
-// 		// var_dump(Input::post('user_id'));
-// 		return "h";
+	{ 
 	}
 
 
@@ -53,6 +49,7 @@ class AdminLoginController extends \BaseController {
 				$response['message']="Welcome , ".$admin[0]->admin_name;
 				Session::put('admin_id',$user_id);
 				Session::put('admin_name',$admin[0]->admin_name);
+				Session::put('admin_type',$admin[0]->admin_type);
 
 		}else{
 			$response['status']=-1;

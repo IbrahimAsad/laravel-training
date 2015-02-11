@@ -42,12 +42,22 @@
                             <a href="addDriver">New Driver</a>
                         </li>
                         <?php
+
                         if(Session::has('admin_id')){
+                            if(Session::get('admin_type')=='SUPER'){
+                                ?>
+                                <li>
+                            <a href="adminSection">Manage Users</a>
+                        </li>
+                        <?
+                            }
+
                             ?>
                              <li>
                             <a href="logout">Log out</a>
                         </li>
                         <?php
+                        
                         }
 
                         ?>

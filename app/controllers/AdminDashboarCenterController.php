@@ -135,10 +135,18 @@ class AdminDashboarCenterController extends \BaseController {
 
 	}
 
-
+	public function getAdmins(){
+		
+	}
 	public function getTasks(){
-		$result =DB::table('tasks')->orderBy('task_id','DESC')->get();
- 			$response=array();
+		$admin_id=Session::get('admin_id');
+
+		$result =DB::table('tasks')
+			->where('status','!=','COMPLETED')
+			->where('user_id','=',$admin_id)
+			->orderBy('task_id','DESC')
+			->get();
+		$response=array();
 
 			$response['tasks_count']=0;
 			$response['tasks']=array();

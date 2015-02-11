@@ -18,6 +18,8 @@ Route::resource('admin/getTasks','AdminDashboarCenterController@getTasks');
 Route::resource('admin/getAllDrivers','AdminDashboarCenterController@getAllDrivers');
 Route::resource('admin/assignTask','AdminDashboarCenterController@assignTask');
 Route::resource('admin/addDriver','AdminDashboarCenterController@newDriver');
+Route::resource('admin/getAdmins','AdminDashboarCenterController@getAdmins');
+
 
 
 
@@ -67,4 +69,9 @@ Route::get('/addTask', function(){
 Route::get('/logout',function(){
 	Session::flush();
 	return View::make('/login');
+});
+
+
+Route::get('/adminSection',function(){
+	return View::make('/manage_users');
 });
