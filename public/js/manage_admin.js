@@ -64,3 +64,27 @@ function createTableElements(admins){
 
 	}
 }
+
+
+
+function addNewAdmin(){
+	var admin_name=$("#admin_name").val();
+	var admin_code=$("#admin_code").val();
+	var obj=new Object();
+	obj.admin_name=admin_name;
+	obj.admin_code=admin_code;
+
+	$.ajax({
+		url:'admin/addAdmin',
+		data:obj,
+		type:'GET',
+		success:function(data){
+			console.log(data);
+		},
+		fail:function(err){
+			console.log(err);
+		}	
+	});
+
+
+}

@@ -20,6 +20,8 @@ Route::resource('admin/assignTask','AdminDashboarCenterController@assignTask');
 Route::resource('admin/addDriver','AdminDashboarCenterController@newDriver');
 Route::resource('admin/getAdmins','AdminDashboarCenterController@getAdmins');
 
+Route::resource('admin/addAdmin','AdminDashboarCenterController@newAdmin');
+
 
 
 
@@ -29,7 +31,7 @@ Route::resource('driver/pingLocation','PingDriverLocationController');
 Route::resource('driver/login','DriverLoginController');
 Route::resource('driver/addNote','DriverAddNoteController');
 // Route::resource('admin/getDrivers','AdminGetTasksController@Hello');
-Route::resource('driver/updateTask','DriverChangeTaskStatusController');
+Route::resource('driver/addAdmin','DriverChangeTaskStatusController');
 
 
 

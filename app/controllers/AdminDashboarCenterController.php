@@ -221,5 +221,30 @@ class AdminDashboarCenterController extends \BaseController {
 
 	}
 
+	public function newAdmin(){
+		$response=array();
+		$response['status']=-1;
+		$response['message']="";
+		$response['data']="";
+
+		$admin_name=Input::get('admin_name');
+		$admin_code=Input::get('admin_code');
+		$cryp_admin_code=md5($admin_code);
+		if($admin_name>'' && $admin_code >''){
+		 
+			$admin_id= DB::table('admin')->insertGetId(array('admin_name'=> $admin_name , 'admin_code'=>$cryp_admin_code));
+
+		
+			$response['status']=10;
+			$response['message']='Added successfully !';
+			$response['data']=array('admin_id'=>$admin_id);
+		}else{
+			$response['status']=-20;
+			$response['message']="Invalid ,Admin  Name or code is empty .. ";
+		}
+
+		return Response::json($response);
+
+	}
 
 }
