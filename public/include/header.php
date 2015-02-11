@@ -49,7 +49,7 @@
                                 <li>
                             <a href="adminSection">Manage Users</a>
                         </li>
-                        <?
+                        <?php
                             }
 
                             ?>

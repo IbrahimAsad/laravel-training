@@ -11,17 +11,21 @@
 
 
 <div>
-<table class="table table-hover" id="admin_table">
+ <div class="col-sm-7  ">
+<table class="table table-hover" id="admins_table">
 		<thead>
 			<tr>
 				<th>admin  ID</th>
 				<th>admin Name</th>
+				<th>Admin's Tasks</th>
 				 <th>New Code </th>
+				 <th> </th>
 			</tr>
 		</thead>
 		<tbody>
 		</tbody>
 	</table>
+</div>
 </div>
 
 

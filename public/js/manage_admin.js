@@ -1,4 +1,5 @@
 
+window.onload=loadAdmins();
 var admins_list=[];
 function loadAdmins(){
 	 $.ajax({
@@ -6,7 +7,7 @@ function loadAdmins(){
 		type:'GET',
 		success:function(data){
 			console.log("response",data);
-			if(data.admins_count>=1)
+			if(data.admin_count>=1)
 				createTableElements(data.admins);
 		},
 		error:function(error){
@@ -51,12 +52,13 @@ function createTableElements(admins){
 			var row="<tr id=task_"+admins[index].admin_id+">"+
 					"<td>"+admins[index].admin_id+"</td>"+
 					"<td>"+admins[index].admin_name+"</td>"+
+					"<td>"+admins[index].tasks+"</td>"+
 					"<td><input type='text' id='new_code"+admins[index].admin_id+"' ></td>"+
-					"<td><input type='button' onclick='updateAdminCode("+admins[index].admin_id+");'</td></tr>";
+					"<td><input type='button' value='Change Code' onclick='updateAdminCode("+admins[index].admin_id+");'</td></tr>";
 					 
 					$("#admins_table").append(row);
 					 
-					admins_list[admins[index].task_id]=tt;	
+					// admins_list[admins[index].task_id]=tt;	
 		})(i);
 
 
