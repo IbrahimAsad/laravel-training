@@ -35,6 +35,13 @@ class DriverChangeTaskStatusController extends \BaseController {
 	}
 
 
+	private function isValidStatus($status){
+		if($status=='NOT STARTED' || $status == 'COMPLETED' || $status == 'IN PROGRESS')
+			return true;
+
+		return false;
+	}
+
 	/**
 	 * Display the specified resource.
 	 *
@@ -51,11 +58,16 @@ class DriverChangeTaskStatusController extends \BaseController {
 		if(is_numeric($driver_id)){
 			$status=Input::get('status');
 			$task_id=Input::get('task_id');
+			if($this->isValidStatus($status)==false){
+				$response['status']="ERROR";
+				$response['message']="Invalid Status";
+				return Response::json($response);
+			}
 
 			$affected=DB::table('tasks')->
 			where('task_id',$task_id)->
 			update(
-				array('status'=>$status)
+				array('status'=>$status,'last_change'=>date("Y-m-d H:i:s"))
 				);
 
 
