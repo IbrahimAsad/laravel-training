@@ -19,8 +19,8 @@ Route::resource('admin/getAllDrivers','AdminDashboarCenterController@getAllDrive
 Route::resource('admin/assignTask','AdminDashboarCenterController@assignTask');
 Route::resource('admin/addDriver','AdminDashboarCenterController@newDriver');
 Route::resource('admin/getAdmins','AdminDashboarCenterController@getAdmins');
-
 Route::resource('admin/addAdmin','AdminDashboarCenterController@newAdmin');
+Route::resource('admin/getHistoryTasks','AdminDashboarCenterController@getHistoryTasks');
 
 
 
@@ -75,5 +75,17 @@ Route::get('/logout',function(){
 
 
 Route::get('/adminSection',function(){
-	return View::make('/manage_users');
+	if(Session::has('admin_id')) 			
+		return View::make('/manage_users');
+	else
+		return View::make('/login');
 });
+
+Route::get('/history',function(){
+	if(Session::has('admin_id')) 			
+		return View::make('/history');
+	else
+		return View::make('/login');
+});
+
+

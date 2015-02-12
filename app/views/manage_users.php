@@ -14,9 +14,10 @@
 
 	<div class="col-sm-7 col-md-offset-2 ">
 		<form class="form-inline">
+			<h4>Add new Admin</h4>
 			<div class="form-group">
-			<label for="admin_name">Name</label>
-			<input type="text" class="form-control" id="admin_name" placeholder="admin name...">
+				<label for="admin_name">Name</label>
+				<input type="text" class="form-control" id="admin_name" placeholder="admin name...">
 			</div>
 			<div class="form-group">
 				<label for="admin_code">Email</label>
@@ -24,7 +25,10 @@
 			</div>
 			<button type="button" class="btn btn-success" onclick="addNewAdmin();">Add Admin</button>
 		</form>
+		<h4 id="result_new_admin"> </h4>
 	</div>
+	<br/>
+	<br/>
  <div class="col-sm-7 col-md-offset-2 ">
 
 <table class="table table-hover" id="admins_table">

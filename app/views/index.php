@@ -6,9 +6,9 @@ include 'include/header.php';
             <div class="row row-offcanvas row-offcanvas-right">
                 <div class="col-xs-12 col-sm-9">
                     <div class="jumbotron main-map" id="map-container">
-                        MAP HERE
-</div>
-                    <table class="table">
+                       
+                    </div>
+                    <table class="table" style="display:none;">
                         <thead>
                             <tr>
                                 <th>Task#</th>
@@ -72,7 +72,7 @@ include 'include/header.php';
                         <!-- <div class="list-group-item">  <label>Phone</label> <input type="text" class="item-input"> </div> -->
 
                     </div>
-                    <div class="list-group">
+                   <!--  <div class="list-group">
                         <a href="#" class="list-group-item active">Link</a>
                         <a href="#" class="list-group-item">Link</a>
                         <a href="#" class="list-group-item">Link</a>
@@ -83,7 +83,7 @@ include 'include/header.php';
                         <a href="#" class="list-group-item">Link</a>
                         <a href="#" class="list-group-item">Link</a>
                         <a href="#" class="list-group-item">Link</a>
-                    </div>
+                    </div> -->
                 </div>
                 <!--/span-->
                 <div class="col-md-4">

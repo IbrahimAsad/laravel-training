@@ -117,7 +117,7 @@ class AdminDashboarCenterController extends \BaseController {
 				);
 
 			if($resp==1){
-				// $response['data']='DONE';
+				$response['error']=100;
 				$response['message']='Assigned successfully';
 			}else{
 				$response['error']=300;
@@ -230,9 +230,9 @@ class AdminDashboarCenterController extends \BaseController {
 		$admin_name=Input::get('admin_name');
 		$admin_code=Input::get('admin_code');
 		$cryp_admin_code=md5($admin_code);
-		if($admin_name>'' && $admin_code >''){
+		if($admin_name>'' && $admin_code >'' && strlen($admin_code) >=5 ){
 		 
-			$admin_id= DB::table('admin')->insertGetId(array('admin_name'=> $admin_name , 'admin_code'=>$cryp_admin_code));
+			$admin_id= DB::table('admin')->insertGetId(array('admin_name'=> $admin_name , 'code'=>$cryp_admin_code,'admin_type'=>'USER'));
 
 		
 			$response['status']=10;
@@ -240,11 +240,53 @@ class AdminDashboarCenterController extends \BaseController {
 			$response['data']=array('admin_id'=>$admin_id);
 		}else{
 			$response['status']=-20;
-			$response['message']="Invalid ,Admin  Name or code is empty .. ";
+			$response['message']="Invalid admin name or admin code less than 5 characters";
 		}
 
 		return Response::json($response);
 
 	}
 
+	public function getHistoryTasks(){
+		$admin_id=Session::get('admin_id');
+
+		$result =DB::table('tasks')
+			->where('user_id','=',$admin_id)
+			->orderBy('task_id','DESC')
+			->get();
+		$response=array();
+
+			$response['tasks_count']=0;
+			$response['tasks']=array();
+			foreach  ($result as $task){
+				$temp=array();
+				$temp['task_id']=$task->task_id;
+				$temp['task_title']=$task->task_title;
+				$temp['name']=$task->first_name." ".$task->last_name;
+				$temp['phone']=$task->phone;
+				$temp['longitude']=$task->longitude;
+				$temp['latitude']=$task->latitude;
+				$temp['task_date']=$task->task_date;
+				$temp['address']=$task->address;
+				$temp['status']=$task->status;
+				$temp['assign']=$task->assign;
+				$temp['assign_to']=$task->assign_to;
+				$temp['driver_name']="";
+				if($task->assign_to >0){
+					$driver=DB::table('driver')->
+						where('driver_id','=',$task->assign_to)
+						->get();
+					if(sizeof($driver)==1)
+						$temp['driver_name']=$driver[0]->driver_name;
+				}
+
+				$response['tasks'][]=$temp;
+			}
+			$response['tasks_count']=sizeof($response['tasks']);
+			return Response::json($response);
+	}
+
 }
+
+
+

@@ -41,6 +41,7 @@ function loadTasks(){
 		},
 		error:function(error){
 			console.log("response_error",error);
+			loadTasks();
 		}
 	}).done(function(){
 
@@ -109,6 +110,7 @@ function loadDrivers(){
 		},
 		error:function(error){
 			console.log("response_error",error);
+			loadDrivers();
 		}
 	}).done(function(){
 		$("#dirver_table > tbody > tr").on('mouseover',function(){
@@ -120,6 +122,8 @@ function loadDrivers(){
 			map.setCenter(drivers_list[currDriver].marker.getPosition());
 		});
 		$("#dirver_table > tbody > tr").on('click',function(){
+			if(!assignStatus)
+				return;
 			var currDriver=$(this).attr('id').split('_');
 			currDriver=currDriver[1];
 			 	driverToAssign=currDriver;
@@ -176,8 +180,8 @@ function createTableElements(tasks){
 					"<td>"+tasks[index].name+"</td>"+
 					"<td>"+tasks[index].address+"</td>"+
 					"<td>"+tasks[index].task_date+"</td>"+
-					"<td>"+tasks[index].status+"</td>"+
-					"<td>"+ast+"</td>"+
+					"<td >"+tasks[index].status+"</td>"+
+					"<td id='assign_status_"+tasks[index].task_id+"'>"+ast+"</td>"+
 					'<td>'+
                           '<a href="javascript:editTask('+tasks[index].task_id+');" class="task-icons-options"  ><img src="css/icons/edit.png"></a>'+
                           '<a href="javascript:deleteTask('+tasks[index].task_id+');"class="task-icons-options"   ><img src="css/icons/delete.png"></a>'+
@@ -216,12 +220,25 @@ function assignTask(){
 	sendData.task_id=taskToAssign;
 	sendData.driver_id=driverToAssign;
 
+	if(sendData.task_id==-1 || sendData.driver_id == -1 || assignStatus == false ){
+		console.log("CANT ASSIGN TASK ... need to select task + driver ");
+		return;
+	}
+
+
+
 	$.ajax({
 		url:'admin/assignTask',
 		type:"GET",
 		data:sendData,
 		success:function(data){
 			console.log(data);
+			alert(data.message);
+			if(data.error==100){
+				$("#assign_status_"+sendData.task_id).html("YES");
+				tasks_list[sendData.task_id].assign_to=sendData.driver_id;
+				cancelSelectedTask();
+			}
 		},
 		error:function(error){
 			console.log(error);
@@ -244,7 +261,7 @@ function initMap() {
     var mapProp = {
         center: new google.maps.LatLng(latitude, longitude),
         zoom: 7,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.SATELLITE
 
     };
     map = new google.maps.Map(document.getElementById("map-container"), mapProp);
@@ -345,6 +362,23 @@ function showCompletedTasks ( value){
 		})(id);
 	}
 }
+
+
+
+
+
+function showDrivers ( value){
+	console.log("showDrivers",value);
+	for(id in drivers_list){
+		(function(driver_id){
+			if(value)
+				drivers_list[driver_id].marker.setMap(map);
+			else
+				drivers_list[driver_id].marker.setMap(null);
+		})(id);
+	}
+}
+
 
 
 

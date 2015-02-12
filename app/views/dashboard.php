@@ -80,16 +80,11 @@
                       <div class="col-sm-offset-2 col-sm-10">
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" checked> Show Drivers
+                                  <input type="checkbox" onchange="showDrivers(this.checked);" id="show_drivers" checked> Show Drivers
                               </label>
                           </div>
                       </div>
                     </div>    
-                      <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                          <button type="submit" class="btn btn-default">Sign in</button>
-                      </div>
-                  </div>
                   </form>   
                   <table class="table table-hover" id="dirver_table">
                           <thead>

@@ -41,6 +41,9 @@
                         <li>
                             <a href="addDriver">New Driver</a>
                         </li>
+                        <li>
+                            <a href="history">Tasks History</a>
+                        </li>
                         <?php
 
                         if(Session::has('admin_id')){

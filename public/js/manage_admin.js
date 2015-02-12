@@ -67,6 +67,11 @@ function createTableElements(admins){
 
 
 
+function updateAdminCode(admin_id){
+	var new_code=$("#new_code"+admin_id).val();
+}
+
+
 function addNewAdmin(){
 	var admin_name=$("#admin_name").val();
 	var admin_code=$("#admin_code").val();
@@ -80,6 +85,14 @@ function addNewAdmin(){
 		type:'GET',
 		success:function(data){
 			console.log(data);
+
+			$("#result_new_admin").val(data.message);
+			if(data.status == 10){
+				data.data.admin_name=obj.admin_name;
+				data.data.tasks=0;
+				createTableElements([data.data]);	
+			}
+			
 		},
 		fail:function(err){
 			console.log(err);
