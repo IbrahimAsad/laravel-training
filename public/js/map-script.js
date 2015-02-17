@@ -16,6 +16,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map-container"), mapProp);
     google.maps.event.addListener(map, 'click', getLocation);
     geocoder = new google.maps.Geocoder();
+ 
 
 }
 

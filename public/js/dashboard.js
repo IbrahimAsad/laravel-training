@@ -1,6 +1,8 @@
 // $(function() {
 
-
+$(function() {
+    $( "#accordion" ).accordion();
+  });
 var longitude = '-97.4267578125';
 var latitude = '39.436192999314095';
 
@@ -19,6 +21,7 @@ var taskToAssign=-1;
 var driverToAssign=-1;
 
 var assignStatus=false;
+var marker=null;
 
 window.onload=initPage();
 
@@ -266,7 +269,8 @@ function initMap() {
     };
     map = new google.maps.Map(document.getElementById("map-container"), mapProp);
     geocoder = new google.maps.Geocoder();
-    
+ google.maps.event.addListener(map, 'click', getLocation);
+
 	loadTasks();
 	loadDrivers();
 
@@ -384,3 +388,99 @@ function showDrivers ( value){
 
 
 
+
+
+function getLocation(event) {
+    // alert("event");
+    console.log(event.latLng);
+    orig = event.latLng;
+    // orig.
+    longitude=orig.lng();
+    latitude=orig.lat();
+    map.setCenter(orig);
+    if (marker != null)
+        marker.setMap(null);
+    marker = new google.maps.Marker({
+        map: map,
+        position: orig
+    });
+
+    codeLatLng(orig);
+
+}
+
+function codeLatLng(latlng) {
+    geocoder.geocode({
+        'latLng': latlng
+    }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            if (results[1]) {
+                $("#address").val(results[1].formatted_address);
+            } else {
+                log('No results found', latlng);
+            }
+        } else {
+            log('Geocoder failed due to: ' + status, geocoder);
+        }
+    });
+}
+
+
+
+
+function showAddressInMap() {
+    address = $("#address").val();
+    geocoder.geocode({
+        'address': address
+    }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            orig = results[0].geometry.location;
+            longitude=orig.lng();
+            latitude=orig.lat();
+            map.setCenter(orig);
+            if (marker != null)
+                marker.setMap(null);
+            marker = new google.maps.Marker({
+                map: map,
+                position: orig
+            });
+        } else {
+            alert("Invalid Address:Location Not Found!");
+        }
+    });
+}
+
+
+
+function AddNewTask() {
+  var sendData=new Object();
+  sendData.latitude=latitude;
+  sendData.longitude=longitude;
+  sendData.task_title=$("#task_title").val();
+  sendData.address=$("#address").val();
+  sendData.note_text=$("#note_text").val();
+  sendData.phone=$("#phone").val();
+  sendData.first_name=$("#first_name").val();
+  sendData.last_name=$("#last_name").val();
+
+  console.log(sendData);
+  $.ajax({
+      url:'admin/addTask',
+      data:sendData,
+      type:'GET',
+      success:function(data){
+        if(data==1){
+            alert('Task Added');
+            loadTasks();
+        }
+        else
+            alert('failed');
+        console.log('success',data);
+
+    },
+    error:function(data){
+        console.log("error",error);
+    }
+
+});
+}

@@ -31,7 +31,7 @@ Route::resource('driver/pingLocation','PingDriverLocationController');
 Route::resource('driver/login','DriverLoginController');
 Route::resource('driver/addNote','DriverAddNoteController');
 // Route::resource('admin/getDrivers','AdminGetTasksController@Hello');
-Route::resource('driver/addAdmin','DriverChangeTaskStatusController');
+Route::resource('driver/updateTask','DriverChangeTaskStatusController');
 
 
 
